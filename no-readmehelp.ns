@@ -1,0 +1,499 @@
+1. types
+/// <summary>
+        /// A universal type; objects of this type do not have any specific type
+        /// details as such.
+        /// </summary>
+        Universal,
+
+        /// <summary>
+        /// A Boolean type; objects of this type can hold the values true or false.
+        /// </summary>
+        Boolean,
+
+        /// <summary>
+        /// An integer type; objects of this type can hold a valid integer which
+        /// ranges from 0 to a certain maximum value.
+        /// </summary>
+        Integer,
+
+        /// <summary>
+        /// A channel type; objects of this type represent a channel that acts as
+        /// the medium of communication between two nodes that run in parallel.
+        /// </summary>
+        Channel,
+
+        /// <summary>
+        /// A void type; procedures can have return type of void.
+        /// </summary>
+        Void
+2.symbols
+/// <summary>
+    /// Enumeration of all the symbols in the language.
+    /// </summary>
+    public enum Symbol
+    {
+        /// <summary>
+        /// &amp;
+        /// </summary>
+        And,
+
+        /// <summary>
+        /// =
+        /// </summary>
+        Becomes,
+
+        /// <summary>
+        /// {
+        /// </summary>
+        Begin,
+
+        /// <summary>
+        /// boolean
+        /// </summary>
+        Boolean,
+
+        /// <summary>
+        /// channel
+        /// </summary>
+        Channel,
+
+        /// <summary>
+        /// ,
+        /// </summary>
+        Comma,
+
+        /// <summary>
+        /// constant
+        /// </summary>
+        Constant,
+
+        /// <summary>
+        /// /
+        /// </summary>
+        Divide,
+
+        /// <summary>
+        /// else
+        /// </summary>
+        Else,
+
+        /// <summary>
+        /// }
+        /// </summary>
+        End,
+
+        /// <summary>
+        /// [End of text]
+        /// </summary>
+        EndOfText,
+
+        /// <summary>
+        /// ==
+        /// </summary>
+        Equal,
+
+        /// <summary>
+        /// false
+        /// </summary>
+        False,
+
+        /// <summary>
+        /// >
+        /// </summary>
+        Greater,
+
+        /// <summary>
+        /// >=
+        /// </summary>
+        GreaterOrEqual,
+
+        /// <summary>
+        /// if
+        /// </summary>
+        If,
+
+        /// <summary>
+        /// integer
+        /// </summary>
+        Integer,
+
+        /// <summary>
+        /// [
+        /// </summary>
+        LeftBracket,
+
+        /// <summary>
+        /// (
+        /// </summary>
+        LeftParanthesis,
+
+        /// <summary>
+        /// &lt;
+        /// </summary>
+        Less,
+
+        /// <summary>
+        /// &lt;=
+        /// </summary>
+        LessOrEqual,
+
+        /// <summary>
+        /// -
+        /// </summary>
+        Minus,
+
+        /// <summary>
+        /// %
+        /// </summary>
+        Modulo,
+
+        /// <summary>
+        /// *
+        /// </summary>
+        Multiply,
+
+        /// <summary>
+        /// [Variable / Keyword]
+        /// </summary>
+        Name,
+
+        /// <summary>
+        /// !
+        /// </summary>
+        Not,
+
+        /// <summary>
+        /// !=
+        /// </summary>
+        NotEqual,
+
+        /// <summary>
+        /// [Integer]
+        /// </summary>
+        Numeral,
+
+        /// <summary>
+        /// open
+        /// </summary>
+        Open,
+
+        /// <summary>
+        /// |
+        /// </summary>
+        Or,
+
+        /// <summary>
+        /// +
+        /// </summary>
+        Plus,
+
+        /// <summary>
+        /// ^
+        /// </summary>
+        Power,
+
+        /// <summary>
+        /// parallel
+        /// </summary>
+        Parallel,
+
+        /// <summary>
+        /// @
+        /// </summary>
+        Procedure,
+
+        /// <summary>
+        /// auto-inserted at the beginning of the code
+        /// </summary>
+        Program,
+
+        /// <summary>
+        /// randomize
+        /// </summary>
+        Randomize,
+
+        /// <summary>
+        /// read
+        /// </summary>
+        Read,
+
+        /// <summary>
+        /// receive
+        /// </summary>
+        Receive,
+
+        /// <summary>
+        /// reference
+        /// </summary>
+        Reference,
+
+        /// <summary>
+        /// ]
+        /// </summary>
+        RightBracket,
+
+        /// <summary>
+        /// )
+        /// </summary>
+        RightParanthesis,
+
+        /// <summary>
+        /// ;
+        /// </summary>
+        SemiColon,
+
+        /// <summary>
+        /// send
+        /// </summary>
+        Send,
+
+        /// <summary>
+        /// [Integer out of bounds / Invalid integer]
+        /// </summary>
+        IntegerOutOfBounds,
+
+        /// <summary>
+        /// ->
+        /// </summary>
+        Through,
+
+        /// <summary>
+        /// true
+        /// </summary>
+        True,
+
+        /// <summary>
+        /// [Unknown symbol]
+        /// </summary>
+        Unknown,
+
+        /// <summary>
+        /// while
+        /// </summary>
+        While,
+
+        /// <summary>
+        /// write
+        /// </summary>
+        Write
+    }
+}
+3.KINDS
+{
+    /// <summary>
+    /// Enumerates all the kinds of objects supported in the language.
+    /// </summary>
+    public enum Kind
+    {
+        /// <summary>
+        /// An undefined kind.
+        /// </summary>
+        Undefined,
+
+        /// <summary>
+        /// Objects of this kind always carry a constant value. 
+        /// </summary>
+        Constant,
+
+        /// <summary>
+        /// Objects of this kind may have their values changed.
+        /// </summary>
+        Variable,
+
+        /// <summary>
+        /// Objects of this kind represent an array of variables.
+        /// </summary>
+        Array,
+
+        /// <summary>
+        /// Objects of this kind are value parameters to a procedure.
+        /// </summary>
+        ValueParameter,
+
+        /// <summary>
+        /// Objects of this kind are reference parameters to a procedure.
+        /// </summary>
+        ReferenceParameter,
+
+        /// <summary>
+        /// An object of this kind is the return parameter to a procedure.
+        /// </summary>
+        ReturnParameter,
+
+        /// <summary>
+        /// Names of this kind represent procedures.
+        /// </summary>
+        Procedure
+    }
+}
+4.calculation examples
+#prime number wiz code
+
+{
+  @ [boolean result] IsPrime(integer number)
+  {
+    if (number <= 0)
+    {
+      result = false;
+    }
+    else 
+    {
+      if (number <= 2)
+      {
+        result = true;
+      }
+      else
+      {
+        integer count;
+    
+        result = true;
+        count = 2;
+        while ((count <= number / 2) & result)
+        {            
+          result = ((number % count) != 0);
+          count = count + 1;
+        }
+      }
+    }
+  }
+  
+  integer number;
+  
+  read number;
+  write IsPrime(number);
+}
+#sorting and listing script
+$ Author: Ramaswamy Krishnan-Chittur
+$ Program to sort an array of numbers using the Quick Sort algorithm.
+$ Demonstrates the usage of arrays and recursive functions.
+
+{
+  constant max = 5;
+  integer[max] numbers;
+  
+  @ QuickSort(integer m, integer n)
+  {
+    integer i, j;
+    
+    @ Partition()
+    {
+      integer r;
+      
+      r = numbers[(m + n) / 2];
+      i = m;
+      j = n;
+      
+      while (i <= j)
+      {
+        while (numbers[i] < r)
+        {
+          i = i + 1;
+        }
+        
+        while (r < numbers[j])
+        {
+          j = j - 1;
+        }
+        
+        if (i <= j)
+        {
+          numbers[i], numbers[j] = numbers[j], numbers[i];
+          
+          i = i + 1;
+          j = j - 1;
+        }
+      }
+    }
+    
+    if (m < n)
+    {
+      Partition();
+      QuickSort(m, j);
+      QuickSort(i, n);
+    }
+  }
+    
+  integer k;
+  
+  k = 1;
+  while (k <= max)
+  {
+    read numbers[k];
+    k = k + 1;
+  }
+  
+  QuickSort(1, max);
+  
+  k = 1;
+  while (k <= max)
+  {
+    write numbers[k];
+    k = k + 1;
+  }
+}
+#select and then sort script
+
+{
+  @ Sort(boolean descending, reference integer a, reference integer b)
+  {
+    boolean condition;
+    
+    if (descending)
+    {
+      condition = a < b;
+    }
+    else
+    {
+      condition = a > b;
+    }
+
+    if (condition)
+    {
+      a, b = b, a; $ Swap a with b.
+    }
+  }
+
+  constant max = 5;
+  boolean descending;
+  integer[max] numbers;
+  integer loop, count;
+  
+  $ Sort in descending order? Read a boolean.
+  read descending;
+
+  $ Input numbers to sort.
+  count = 1;
+  while (count <= max)
+  {
+    read numbers[count];
+    count = count + 1;
+  }
+
+  $ Sort.
+  loop = 0;  
+  while (loop < max - 1)
+  {
+    count = 1;
+    while (count < max)
+    {
+      Sort(descending, 
+           reference numbers[count], 
+           reference numbers[count + 1]);
+      count = count + 1;
+    }
+
+    loop = loop + 1;
+  }
+  
+  $ Output sorted numbers.
+  count = 1;
+  while (count <= max)
+  {
+    write numbers[count];
+    count = count + 1;
+  }
+}
+ for community join the no foundation on Github
+at github.com/no-foundation
+or at no-foundation.tk
+see ya!
